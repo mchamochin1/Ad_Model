@@ -9,12 +9,12 @@ from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import Lasso
 
 
-os.chdir(os.path.dirname(__file__))
+#os.chdir(os.path.dirname(__file__))
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
+#app.config['DEBUG'] = True
 
-model = pickle.load(open('ad_model.pkl','rb')) # Leo el modelo con pickle
+
 #
 # CREO UNA PUERTA DE ACCESO A NUESTRO MODELO
 # FULLSTACK CREARIA UN FRONTEND PARA ESTO
@@ -30,6 +30,7 @@ model = pickle.load(open('ad_model.pkl','rb')) # Leo el modelo con pickle
 # A.- Creo un ruta que me devuelva la prediccion del modelo
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
+    model = pickle.load(open('ad_model.pkl','rb')) # Leo el modelo con pickle
     
     # Cojete estos tres items y si no esta pon None
     tv = request.args.get('tv', None)
