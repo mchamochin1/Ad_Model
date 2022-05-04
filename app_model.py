@@ -44,7 +44,7 @@ def predict():
     return jsonify({'predictions': prediction[0]})
 
 # B.- Reentrenar de nuevo el modelo con los posibles nuevos registros que se recojan
-@app.route('/api/v1/retrain', methods=['GET'])
+@app.route('/api/v1/retrain', methods=['PUT'])
 def retrain():
     
     os.chdir(os.path.dirname(__file__))
