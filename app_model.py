@@ -30,6 +30,8 @@ app = Flask(__name__)
 # A.- Creo un ruta que me devuelva la prediccion del modelo
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
+    
+    os.chdir(os.path.dirname(__file__))
     model = pickle.load(open('ad_model.pkl','rb')) # Leo el modelo con pickle
     
     # Cojete estos tres items y si no esta pon None
